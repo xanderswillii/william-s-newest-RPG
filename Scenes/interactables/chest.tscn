@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://rkes2y2xmu3p"]
+
+[ext_resource type="Script" uid="uid://dfcc67cmigslu" path="res://Scenes/interactables/chest.gd" id="1_7cbq3"]
+[ext_resource type="Texture2D" uid="uid://cr7qqg3dgpj5q" path="res://Sprites/Interactables/chest-sheet.png" id="2_8irwa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5c28"]
+
+[sub_resource type="Animation" id="Animation_4qrom"]
+resource_name = "Closed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fsfgr"]
+resource_name = "Open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_im812"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tri57"]
+_data = {
+&"Closed": SubResource("Animation_4qrom"),
+&"Open": SubResource("Animation_fsfgr"),
+&"RESET": SubResource("Animation_im812")
+}
+
+[node name="chest" type="Area2D" unique_id=1383766028]
+script = ExtResource("1_7cbq3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1153529628]
+texture = ExtResource("2_8irwa")
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1850497529]
+shape = SubResource("RectangleShape2D_k5c28")
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=1060323177]
+libraries/ = SubResource("AnimationLibrary_tri57")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
