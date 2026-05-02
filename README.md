@@ -7,16 +7,16 @@ Explore the underground world full of secretes and hidden paths
 Navigate thriugh interconnected levels 
 Survive enemies attacks 
 
-##Build With
+## Build With
 Godot Engine 4.6- GD Script
 2D platformer with metroidvania-style level design
 
-##Controls
+## Controls
 use the Arrow Keys to move left and right
 use x to swing the sword to hit enemies and destroy some objects
 Jump with Spacebar
 
-##Development Status
+## Development Status
 completed:  Player movement & animations
  Portal level transitions
  Killzone & scene reload
